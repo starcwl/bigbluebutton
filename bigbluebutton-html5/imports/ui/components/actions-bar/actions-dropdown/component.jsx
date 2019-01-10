@@ -100,7 +100,7 @@ class ActionsDropdown extends Component {
           onClick={this.handlePresentationClick}
         />
         : null),
-      (record && isUserModerator && allowStartStopRecording ?
+      (isUserPresenter && record && isUserModerator && allowStartStopRecording ?
         <DropdownListItem
           icon="record"
           label={intl.formatMessage(isRecording ?

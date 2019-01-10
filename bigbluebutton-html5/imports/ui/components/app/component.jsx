@@ -301,7 +301,20 @@ class App extends Component {
   render() {
     const { params, userlistIsOpen } = this.props;
     const { enableResize } = this.state;
-
+    
+    return (
+      <main className={styles.main}>
+        <section className={styles.wrapper}>
+          <div className={styles.content}>
+            {this.renderNavBar()}
+            {this.renderMedia()}
+            {this.renderActionsBar()}
+          </div>
+        </section>
+        <ModalContainer />
+        <ToastContainer />
+      </main>
+    );
     return (
       <main className={styles.main}>
         <NotificationsBarContainer />
