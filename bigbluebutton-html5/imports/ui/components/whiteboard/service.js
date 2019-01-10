@@ -1,3 +1,4 @@
+import { makeCall } from '/imports/ui/services/api';
 import Users from '/imports/api/users';
 import Auth from '/imports/ui/services/auth';
 import WhiteboardMultiUser from '/imports/api/whiteboard-multi-user/';
@@ -155,7 +156,8 @@ export function sendAnnotation(annotation) {
   if (!Meteor.status().connected) return;
 
   annotationsQueue.push(annotation);
-  if (!annotationsSenderIsRunning) setTimeout(proccessAnnotationsQueue, annotationsBufferTimeMin);
+
+  makeCall('sendAnnotation', annotation);
 
   // skip optimistic for draw end since the smoothing is done in akka
   if (annotation.status === DRAW_END) return;
